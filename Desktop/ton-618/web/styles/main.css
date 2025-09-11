@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    line-height: 1.6
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px
+}
+
+.section {
+    padding: 64px 0
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm)
+}
+
+.btn-primary {
+    border: none;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary)
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm)
+}
+
+.input,
+.select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text)
+}
+
+.grid {
+    display: grid;
+    gap: 16px
+}
+
+.listings {
+    grid-template-columns: repeat(12, 1fr)
+}
+
+.listing-card {
+    grid-column: span 4
+}
+
+@media (max-width: 992px) {
+    .listing-card {
+        grid-column: span 6
+    }
+}
+
+@media (max-width: 768px) {
+    .listing-card {
+        grid-column: span 12
+    }
+}
+
+/* Accessibility */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important
+    }
+}

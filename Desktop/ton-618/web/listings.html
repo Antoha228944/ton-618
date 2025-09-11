@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Объявления — покупка и аренда недвижимости</title>
+    <meta name="description" content="Актуальные объявления: фильтры, карта, сохранение и сравнение." />
+    <link rel="canonical" href="/listings.html" />
+    <meta property="og:title" content="Объявления" />
+    <meta property="og:description" content="Фильтры, сортировка, карта, сохранение и сравнение." />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="/js/i18n.js"></script>
+    <script defer src="/js/animations.js"></script>
+    <script defer src="/js/listings.js"></script>
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 16px;
+        }
+
+        #map {
+            height: calc(100vh - 180px);
+            position: sticky;
+            top: 80px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px
+        }
+
+        @media (max-width: 992px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            #map {
+                height: 380px;
+                position: static;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"CollectionPage","name":"Listings"}
+  </script>
+</head>
+
+<body>
+    <header class="section" style="padding-bottom:16px">
+        <div class="container">
+            <h1>Объявления</h1>
+            <div class="filters">
+                <input class="input" id="q" placeholder="Город, адрес..." style="min-width:220px" />
+                <select class="select" id="bedrooms" style="min-width:120px">
+                    <option value="">Комнаты</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4+</option>
+                </select>
+                <input class="input" id="minPrice" placeholder="Мин. цена" type="number" style="min-width:140px" />
+                <input class="input" id="maxPrice" placeholder="Макс. цена" type="number" style="min-width:140px" />
+                <button class="btn btn-primary" id="applyFilters">Применить</button>
+                <button class="btn" id="clearFilters">Сбросить</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="section" style="padding-top:0">
+        <div class="container layout">
+            <section>
+                <div class="grid listings" id="list"></div>
+            </section>
+            <aside>
+                <div id="map" aria-label="Карта"></div>
+            </aside>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+:root {
+    /* Colors */
+    --primary: #0b6efd;
+    --accent: #ff6a00;
+    --success: #16a34a;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --bg: #ffffff;
+    --bg-2: #f7f7fb;
+    --text: #0f172a;
+    --muted: #6b7280;
+    --panel: #ffffff;
+    --border: #e5e7eb;
+    --bg-dark: #0f172a;
+    --panel-dark: #111827;
+    --text-dark: #f9fafb;
+    --muted-dark: #94a3b8;
+    --border-dark: #1f2937;
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    /* Radii */
+    --r-sm: 8px;
+    --r-md: 12px;
+    --r-lg: 16px;
+    --r-xl: 20px;
+    --r-2xl: 28px;
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, .06);
+    --shadow-md: 0 10px 25px rgba(0, 0, 0, .12);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, .18);
+    /* Motion */
+    --motion-duration: .6s;
+    --motion-ease: cubic-bezier(.25, .46, .45, .94);
+    /* Z-index */
+    --z-header: 1000;
+    --z-overlay: 1100;
+    --z-modal: 1200;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: var(--bg-dark);
+        --panel: var(--panel-dark);
+        --text: var(--text-dark);
+        --muted: var(--muted-dark);
+        --border: var(--border-dark);
+    }
+}

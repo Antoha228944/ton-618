@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Найдите идеальную недвижимость — быстро и безопасно</title>
+    <meta name="description"
+        content="Поиск, покупка и аренда недвижимости. Современные инструменты, интерактивные карты и лучшие предложения." />
+    <link rel="canonical" href="/" />
+    <meta property="og:title" content="Найдите идеальную недвижимость — быстро и безопасно" />
+    <meta property="og:description"
+        content="Современная платформа поиска недвижимости с картой, фильтрами и отзывами." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="/js/i18n.js"></script>
+    <script defer src="/js/animations.js"></script>
+    <script defer src="/js/home.js"></script>
+    <script defer src="/js/map.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"Real Estate","url":"/"}
+  </script>
+    <style>
+        /* critical CSS subset */
+        body {
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        header.hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 86vh;
+            display: grid;
+            align-items: center;
+            background: radial-gradient(1200px 600px at 10% 10%, #0b6efd22, transparent 60%), linear-gradient(135deg, var(--bg), var(--bg-2));
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 24px;
+        }
+
+        h1 {
+            font-size: clamp(28px, 4vw, 56px);
+            line-height: 1.1;
+            margin: 0 0 12px;
+        }
+
+        .lead {
+            font-size: clamp(16px, 1.6vw, 20px);
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border-radius: 12px;
+            padding: 14px 18px;
+            border: 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .search-box {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 12px;
+            margin-top: 16px;
+        }
+
+        .search-box input {
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--text);
+            font-size: 16px;
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 420px;
+        }
+
+        #lottie-hero {
+            width: 100%;
+            height: 100%;
+        }
+
+        .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .section {
+            padding: 64px 0;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+
+        .listing-card {
+            grid-column: span 4;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transform: translateZ(0);
+        }
+
+        .listing-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .listing-card .pad {
+            padding: 14px;
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .listing-card {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .listing-card {
+                grid-column: span 12;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero" aria-label="Hero">
+        <div class="container hero-grid">
+            <div>
+                <h1 data-i18n="hero_h1">Найдите идеальную недвижимость — быстро и безопасно</h1>
+                <p class="lead" data-i18n="hero_lead">Поиск, фильтры, карта и умные рекомендации — всё в одном месте.
+                </p>
+                <div class="search-box" role="search">
+                    <input type="text" id="q" placeholder="Город, район, адрес, метро..." aria-label="Поиск" />
+                    <button class="btn btn-primary" id="searchBtn" data-i18n="cta_primary">Подобрать варианты</button>
+                </div>
+                <div class="cta-row" style="margin-top:14px">
+                    <button class="btn btn-ghost" data-i18n="cta_secondary">Добавить объект</button>
+                </div>
+                <div class="value-props" style="display:flex; gap:12px; margin-top:14px">
+                    <span>⚡ Быстро</span><span>🔒 Безопасно</span><span>🗺️ С картой</span>
+                </div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div id="lottie-hero"></div>
+                <canvas id="particles" class="particles" aria-hidden="true"></canvas>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section" aria-labelledby="featured-title">
+            <div class="container">
+                <h2 id="featured-title">Избранные объявления</h2>
+                <div class="cards listings" id="featured"></div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="map-title">
+            <div class="container">
+                <h2 id="map-title">Карта предложений</h2>
+                <div id="mapPreview"
+                    style="height:420px; border-radius:16px; overflow:hidden; border:1px solid var(--border);"></div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="testimonials-title">
+            <div class="container">
+                <h2 id="testimonials-title">Отзывы</h2>
+                <div class="cards" id="testimonials"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section" role="contentinfo">
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+            <span>© 2025 Real Estate</span>
+            <nav aria-label="Footer">
+                <a href="/privacy.html">Политика конфиденциальности</a>
+                <a href="/contact.html">Контакты</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+
+</html>
