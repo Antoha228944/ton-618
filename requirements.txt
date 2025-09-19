@@ -1,4 +1,4 @@
-aiogram==3.10.0
+aiogram==2.25.1
 telethon==1.35.0
 pillow>=9.5.0
 reportlab==4.1.0

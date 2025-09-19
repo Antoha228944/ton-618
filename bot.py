@@ -799,88 +799,50 @@ async def generate_website_html(user_data, photo_urls):
         </div>
     </section>
 
-    <!-- Contact Section (только если есть контакты) -->
-    {f'''
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">Контакты</h2>
-            
-            <div class="contact-grid">
-                {contacts_html}
-            </div>
-            
-            {cta_buttons_html if cta_buttons_html else ''}
+ contacts_html = ""
+for contact in contacts_list:  # допустим, у тебя список контактов
+    cont   <div class="contact-item">
+# Формируем HTML контактов
+contacts_html = ""
+for contact in contacts_list:  # contacts_list — список словарей с контактами
+    contacts_html += f'''
+# Список контактов (пример)
+# Пример списка контактов
+contacts_list = [
+    {"name": "Антон", "phone": "+79161234567"},
+    {"name": "Ирина", "phone": "+79169876543"}
+]
+
+# Формируем HTML контактов
+contacts_html = ""
+for contact in contacts_list:
+    contacts_html += f'''
+    <div class="contact-item">
+        <p>Имя контакта: {contact.get("name", "")}</p>
+        <p>Телефон: {contact.get("phone", "")}</p>
+    </div>
+    '''
+
+# Основной шаблон страницы
+full_html = f'''
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2 class="section-title" style="color: white;">Контакты</h2>
+        <div class="contact-grid">
+            {contacts_html}
         </div>
-    </section>
-    ''' if contacts_html else ''}
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2024 {user_data['title']}. Все права защищены.</p>
-            <div class="watermark">
-                Сайт создан через @ANton618_bot
-            </div>
+<footer class="footer">
+    <div class="container">
+        <p>© 2024 {user_data['title']}. Все права защищены.</p>
+        <div class="watermark">
+            Сайт создан через @ANton618_bot
         </div>
-    </footer>
-
-    <script>
-        // Плавная прокрутка
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {{
-            anchor.addEventListener('click', function (e) {{
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {{
-                    target.scrollIntoView({{
-                        behavior: 'smooth',
-                        block: 'start'
-                    }});
-                }}
-            }});
-        }});
-
-        // Анимации при скролле
-        const observerOptions = {{
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        }};
-
-        const observer = new IntersectionObserver((entries) => {{
-            entries.forEach(entry => {{
-                if (entry.isIntersecting) {{
-                    entry.target.classList.add('animate');
-                }}
-            }});
-        }}, observerOptions);
-
-        document.querySelectorAll('.spec-item, .gallery-item, .contact-item, .about-content').forEach(el => {{
-            observer.observe(el);
-        }});
-
-        // Фиксированная навигация
-        window.addEventListener('scroll', () => {{
-            const nav = document.querySelector('.nav-scroll');
-            if (window.scrollY > 200) {{
-                nav.style.position = 'fixed';
-                nav.style.width = '100%';
-                nav.style.top = '0';
-            }} else {{
-                nav.style.position = 'static';
-            }}
-        }});
-
-        // Parallax эффект
-        window.addEventListener('scroll', () => {{
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.header');
-            if (parallax) {{
-                parallax.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
-            }}
-        }});
-    </script>
-</body>
-</html>'''
-    return html_content
+    </div>
+</footer>
+''' 
 
 # ===== ОСНОВНЫЕ ОБРАБОТЧИКИ =====
 
@@ -1211,43 +1173,35 @@ async def main():
     print("💎 Генератор сайтов премиум-класса готов")
     print("🎯 Полный контроль над контентом и дизайном")
     
-from aiogram import Bot, Dispatcher, types
-from aiogram.utils.executor import start_webhook
-from config import BOT_TOKEN
+    from aiogram import Bot, Dispatcher
+from aiogram.types import Message
+from aiogram.utils.webhook import start_webhook
+from config import BOT_TOKEN  # <- твой токен здесь
 
-# Создаём бота и диспетчер
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
 
-# Настройки вебхука
 WEBHOOK_URL = "https://ТВОЙ_СЕРВИС.onrender.com/webhook"
 WEBAPP_HOST = "0.0.0.0"
 WEBAPP_PORT = 8000
 
-# Функции старта и завершения
-async def on_startup(dp):
+async def on_startup(dispatcher: Dispatcher):
     await bot.set_webhook(WEBHOOK_URL)
 
-async def on_shutdown(dp):
+async def on_shutdown(dispatcher: Dispatcher):
     await bot.delete_webhook()
 
-# Здесь подключаем обработчики сообщений (твои @dp.message_handler и т.д.)
+# Пример обработчика сообщений
+@dp.message()
+async def echo(message: Message):
+    await message.answer(f"Вы сказали: {message.text}")
 
-# Старт вебхука
-start_webhook(
-    dispatcher=dp,
-    webhook_path="/webhook",
-    on_startup=on_startup,
-    on_shutdown=on_shutdown,
-    host=WEBAPP_HOST,
-    port=WEBAPP_PORT,
-)
-
-
-    
-
-
-
-
-
-
+if __name__ == "__main__":
+    start_webhook(
+        dispatcher=dp,
+        webhook_path="/webhook",
+        on_startup=on_startup,
+        on_shutdown=on_shutdown,
+        host=WEBAPP_HOST,
+        port=WEBAPP_PORT,
+    )
