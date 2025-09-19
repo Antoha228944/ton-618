@@ -1211,10 +1211,39 @@ async def main():
     print("💎 Генератор сайтов премиум-класса готов")
     print("🎯 Полный контроль над контентом и дизайном")
     
-    await dp.start_polling(bot)
+from aiogram import Bot, Dispatcher, types
+from aiogram.utils.executor import start_webhook
+from config import BOT_TOKEN
 
-if __name__ == "__main__":
-    asyncio.run(main())
+# Создаём бота и диспетчер
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher(bot)
+
+# Настройки вебхука
+WEBHOOK_URL = "https://ТВОЙ_СЕРВИС.onrender.com/webhook"
+WEBAPP_HOST = "0.0.0.0"
+WEBAPP_PORT = 8000
+
+# Функции старта и завершения
+async def on_startup(dp):
+    await bot.set_webhook(WEBHOOK_URL)
+
+async def on_shutdown(dp):
+    await bot.delete_webhook()
+
+# Здесь подключаем обработчики сообщений (твои @dp.message_handler и т.д.)
+
+# Старт вебхука
+start_webhook(
+    dispatcher=dp,
+    webhook_path="/webhook",
+    on_startup=on_startup,
+    on_shutdown=on_shutdown,
+    host=WEBAPP_HOST,
+    port=WEBAPP_PORT,
+)
+
+
     
 
 
