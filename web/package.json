@@ -1,0 +1,24 @@
+{
+    "name": "real-estate-web",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev:api": "json-server --watch mock/db.json --port 5050 --static ./public",
+        "dev:web": "http-server . -p 5173 -c-1",
+        "dev": "concurrently \"npm:dev:api\" \"npm:dev:web\"",
+        "lint": "echo 'No linter configured'",
+        "build": "echo 'Static build: files already in web/'",
+        "start": "http-server . -p 5173"
+    },
+    "dependencies": {
+        "json-server": "^0.17.4",
+        "http-server": "^14.1.1",
+        "concurrently": "^8.2.2",
+        "lottie-web": "^5.12.2",
+        "gsap": "^3.12.5",
+        "swiper": "^11.1.4",
+        "photoswipe": "^5.4.4",
+        "mapbox-gl": "^3.3.0"
+    }
+}

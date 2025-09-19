@@ -1,0 +1,66 @@
+{
+    "listings": [
+        {
+            "id": 1234,
+            "title": "Современная 3-комнатная квартира у моря",
+            "description": "Панорамные окна, 2 спальни, 1 гостевая, 120 м², 5 минут до пляжа.",
+            "price": 185000,
+            "currency": "USD",
+            "coordinates": {
+                "lat": -8.657,
+                "lng": 115.238
+            },
+            "address": "Sanur, Bali",
+            "type": "apartment",
+            "rooms": 3,
+            "bathrooms": 2,
+            "area_m2": 120,
+            "year_built": 2018,
+            "amenities": [
+                "parking",
+                "pool",
+                "air_conditioning",
+                "wifi",
+                "balcony"
+            ],
+            "images": [
+                "/images/sample/1234/1.webp",
+                "/images/sample/1234/2.webp",
+                "/images/sample/1234/360tour.jpg"
+            ],
+            "floorplan": "/images/sample/1234/floorplan.svg",
+            "virtual_tour": "https://360viewer.example/1234",
+            "price_history": [
+                {
+                    "date": "2024-01-01",
+                    "price": 175000
+                },
+                {
+                    "date": "2024-07-01",
+                    "price": 180000
+                },
+                {
+                    "date": "2025-06-01",
+                    "price": 185000
+                }
+            ],
+            "agent_id": "a1"
+        }
+    ],
+    "agents": [
+        {
+            "id": "a1",
+            "name": "Иван Иванов",
+            "phone": "+62 812-0000-0000",
+            "email": "ivan@example.com"
+        }
+    ],
+    "posts": [
+        {
+            "id": 1,
+            "title": "Как подготовить квартиру к продаже",
+            "slug": "prepare-for-sale",
+            "body": "..."
+        }
+    ]
+}

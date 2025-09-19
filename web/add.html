@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Добавить объявление</title>
+    <meta name="description" content="Добавление/редактирование объявления: фото, описание, цена, адрес." />
+    <link rel="canonical" href="/add.html" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="/js/i18n.js"></script>
+    <script defer src="/js/add.js"></script>
+    <style>
+        .form {
+            max-width: 900px;
+            margin: 0 auto
+        }
+
+        .drop {
+            border: 2px dashed var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            background: var(--panel)
+        }
+
+        .thumbs {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            margin-top: 12px
+        }
+
+        .thumbs img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px
+        }
+
+        @media (max-width: 768px) {
+            .thumbs {
+                grid-template-columns: repeat(3, 1fr)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="section" style="padding-bottom:16px">
+        <div class="container">
+            <h1>Добавить объявление</h1>
+        </div>
+    </header>
+    <main class="section" style="padding-top:0">
+        <div class="container">
+            <form class="form card" style="padding:16px" id="addForm">
+                <label>Название<input class="input" id="title" required /></label>
+                <label>Описание<textarea class="input" id="desc" rows="5" required></textarea></label>
+                <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:12px">
+                    <label>Цена<input class="input" id="price" type="number" required /></label>
+                    <label>Валюта<select class="select" id="currency">
+                            <option>USD</option>
+                            <option>EUR</option>
+                            <option>RUB</option>
+                        </select></label>
+                    <label>Комнаты<input class="input" id="rooms" type="number" /></label>
+                    <label>Площадь (м²)<input class="input" id="area" type="number" /></label>
+                </div>
+                <label>Адрес<input class="input" id="address" /></label>
+                <div class="drop" id="drop">
+                    Перетащите фото сюда или нажмите для выбора
+                    <input type="file" id="file" accept="image/*" multiple style="display:none" />
+                    <div class="thumbs" id="thumbs"></div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:12px">
+                    <button class="btn btn-primary" type="submit">Сохранить</button>
+                    <button class="btn" type="button" id="saveDraft">Сохранить черновик</button>
+                </div>
+                <div id="progress" style="margin-top:8px; color:var(--muted)"></div>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

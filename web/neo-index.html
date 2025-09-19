@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru" class="neo">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Галерея недвижимости — Neo</title>
+    <meta name="description" content="Элитная витрина недвижимости с нео-архитектурной анимацией и эффектами." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/neo.css" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script defer src="/js/neo.js"></script>
+    <style>
+        .hero h1 span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(16px)
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="inner">
+            <a href="#hero">Главная</a>
+            <a href="#listings">Объекты</a>
+            <a href="#cta">Связаться</a>
+        </div>
+    </nav>
+
+    <header id="hero" class="hero">
+        <div class="neon-gradient"></div>
+        <canvas class="particles" id="particles"></canvas>
+        <div class="grid">
+            <div>
+                <h1 aria-label="Найдите идеальную недвижимость">
+                    <span>Найдите</span> <span>идеальную</span> <span>недвижимость</span>
+                </h1>
+                <p class="lead">Эмоциональная витрина: неоновые акценты, стекло, плавные переходы и живые карточки.</p>
+                <div class="cta" style="display:flex; gap:10px; margin-top:14px">
+                    <a class="btn btn-ripple" href="#listings">Смотреть объекты</a>
+                    <a class="btn btn-ripple" style="background:var(--neo-grad-1); color:#0f0f0f"
+                        href="#cta">Связаться</a>
+                </div>
+            </div>
+            <div class="glass" style="min-height:420px"></div>
+        </div>
+    </header>
+
+    <main>
+        <section id="listings" class="section" style="padding:64px 0">
+            <div class="container" style="max-width:1200px; margin:0 auto; padding:0 16px">
+                <h2 class="section-title">Избранные объекты</h2>
+                <div class="grid-neo" id="neo-cards"></div>
+            </div>
+        </section>
+
+        <section id="cta" class="section" style="padding:64px 0">
+            <div class="container" style="max-width:900px; margin:0 auto; padding:0 16px">
+                <div class="glass" style="padding:20px">
+                    <h2 class="section-title">Оставьте заявку</h2>
+                    <form id="neo-form" style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+                        <input class="input" placeholder="Имя" required />
+                        <input class="input" placeholder="Телефон" required />
+                        <input class="input" placeholder="Email" type="email" />
+                        <input class="input" placeholder="Город/район" />
+                        <textarea class="input" style="grid-column: span 2" rows="4"
+                            placeholder="Опишите запрос"></textarea>
+                        <button class="btn btn-ripple"
+                            style="grid-column: span 2; justify-content:center; background: var(--neo-grad-2); color:#fff">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section" style="padding:24px 0; border-top:1px solid rgba(255,255,255,.06)">
+        <div class="container" style="max-width:1200px; margin:0 auto; padding:0 16px; color:var(--neo-muted)">© 2025
+            Neo Real Estate</div>
+    </footer>
+</body>
+
+</html>
